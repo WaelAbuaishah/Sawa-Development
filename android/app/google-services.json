@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1028198685460",
+    "firebase_url": "https://sawadevelopment-5cd44.firebaseio.com",
+    "project_id": "sawadevelopment-5cd44",
+    "storage_bucket": "sawadevelopment-5cd44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028198685460:android:33d280739b608a4d028001",
+        "android_client_info": {
+          "package_name": "com.UNHCR.Camps.unhcr_camps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028198685460-k8npcs6p4vhqbk8i272khu1m2hf7mdg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_XmRBe2AU0Y0mlm0xHXDMMkKkiJUDV_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028198685460-k8npcs6p4vhqbk8i272khu1m2hf7mdg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

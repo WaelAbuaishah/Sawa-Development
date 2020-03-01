@@ -28,6 +28,18 @@ class _addCampsState extends State<addCamps> {
   TextEditingController familyCounts=TextEditingController();
   TextEditingController needs=TextEditingController();
   @override
+  void initState() {
+super.initState();
+if(widget.campsInfo!=null) {
+  campName.text = widget.campsInfo.campName;
+  campCode.text=widget.campsInfo.campCode;
+  tentsCount.text = widget.campsInfo.tentsCount.toString();
+  familyCounts.text = widget.campsInfo.familyCounts.toString();
+  location.text = widget.campsInfo.location;
+  needs.text = widget.campsInfo.needs;
+}
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -45,6 +57,7 @@ class _addCampsState extends State<addCamps> {
 
                 ),
                 TextField(
+                  readOnly: (widget.campsInfo==null)?false:true,
                   controller: campCode,
                   decoration: InputDecoration(
                     labelText: "camp Code ",
@@ -59,6 +72,7 @@ class _addCampsState extends State<addCamps> {
 
                 ),
                 TextField(
+                  keyboardType:TextInputType.number,
                   controller: tentsCount,
                   decoration: InputDecoration(
                     labelText: "tents Count",
@@ -66,6 +80,7 @@ class _addCampsState extends State<addCamps> {
 
                 ),
                 TextField(
+                  keyboardType:TextInputType.number,
                   controller: familyCounts,
                   decoration: InputDecoration(
                     labelText: "family Counts",
@@ -82,9 +97,24 @@ class _addCampsState extends State<addCamps> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    RaisedButton(
+                    (widget.campsInfo==null)?RaisedButton(
                       child: Text("Add Camps"),
-                      onPressed: ()=> fireStorage.addCamps(CampsInfo(campName: campName.text,campCode: campCode.text,location: location.text,needs: needs.text,tentsCount:int.parse( tentsCount.text),familyCounts: int.parse(familyCounts.text))),
+                      onPressed: (){
+                        fireStorage.addCamps(
+                            CampsInfo(campName: campName.text,campCode: campCode.text,
+                                location: location.text,needs: needs.text,
+                                tentsCount:int.parse( tentsCount.text),familyCounts: int.parse(familyCounts.text)));
+                        Navigator.pop(context);
+                        },
+                    ):RaisedButton(
+                      child: Text("update Camps"),
+                      onPressed: (){
+                        fireStorage.updateCamps(
+                            CampsInfo(campName: campName.text,campCode: campCode.text,
+                                location: location.text,needs: needs.text,
+                                tentsCount:int.parse( tentsCount.text),familyCounts: int.parse(familyCounts.text)));
+                        Navigator.pop(context);
+                      },
                     ),
                   ],
                 )

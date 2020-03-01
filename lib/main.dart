@@ -38,26 +38,27 @@ class _CampsState extends State<Camps> {
 
         ],
       ),
-body: FutureBuilder(
+body: Material(child: FutureBuilder(
   future: fireStorage.getCamps(),
     builder: (BuildContext context,
     AsyncSnapshot<List<CampsInfo>> snapshot){
     if(snapshot.hasData&&snapshot.data.isNotEmpty)
-    return Expanded(
-      child: Material(
-        child: ListView.builder(
+    return ListView.builder(
           itemCount: snapshot.data.length,
     itemBuilder: (BuildContext context, int index) {
       final item = snapshot.data[index];
       return ListTile(
-        onTap: ()=>{},
+        onTap: ()=>
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => addCamps(campsInfo: item,)),
+          ),
         title: Text(snapshot.data[index].campName),
         subtitle: Text(snapshot.data[index].location),
       );
     }
-        ),
-      ),
-    );
+        );
+
 else return Container(
       child: Center(
         child: Text("Now Data"),
@@ -66,7 +67,7 @@ else return Container(
 
     }),
 
-     // body: ,
+),// body: ,
     );
   }
 }
